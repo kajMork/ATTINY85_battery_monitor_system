@@ -53,18 +53,6 @@ void setup() {
   setupWDT();
 }
 
-volatile static int _delValue; // Set volatile to keep.
-
-void delayLoop(int del) { // 1
-
-  if(del<=0) return 0;
-
-  _delValue = del;
-  #undef  _MORENOP_
-  #define _MORENOP_ " nop \n\t  nop \n\t"
-
-  while(_delValue--) ;// _MORENOP_ ;
-}
 
 void _loop() {
   // Re-enter sleep mode.
